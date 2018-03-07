@@ -8,14 +8,32 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, FileManagerDelegate  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+      
+      //  print(NSHomeDirectory())
+        
+        let filemanager:FileManager = FileManager()
+        do {
+        let documentsUrl = try filemanager.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        print(documentsUrl)
+            
+        let files  = try filemanager.contentsOfDirectory(atPath: "/Users/shubhambatra/Downloads")
+        
+            for file in files {
+                print(file)
+            }
     }
-
+    
+        catch {
+            print(error.localizedDescription)
+        }
+    
+    }
+    
+        
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
