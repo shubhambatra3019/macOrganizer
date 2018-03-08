@@ -10,30 +10,35 @@ import Cocoa
 
 class ViewController: NSViewController, FileManagerDelegate  {
 
+    let fileManager:FileManager = FileManager()
+    var filesArray: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-      //  print(NSHomeDirectory())
         
-        let filemanager:FileManager = FileManager()
+    }
+    
+    //Mark: To get all the Contents of Directory
+    func getContents(path: String) {
         do {
-        let documentsUrl = try filemanager.url(for: .downloadsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        print(documentsUrl)
-            
-        let files  = try filemanager.contentsOfDirectory(atPath: "/Users/shubhambatra/Downloads")
-        
+            let files  = try fileManager.contentsOfDirectory(atPath: path)
             for file in files {
                 print(file)
             }
-    }
-    
-        catch {
-            print(error.localizedDescription)
         }
-    
+        catch {
+            print("Error")
+        }
     }
     
+    //Mark: Organize all the files in the array containing all file name.
+    func organizeFiles(files: [String]) {
         
+    }
+    
+    
+    
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.

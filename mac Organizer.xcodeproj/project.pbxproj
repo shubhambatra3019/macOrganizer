@@ -14,7 +14,6 @@
 		7F9D2BB1204E657A0080BB92 /* mac_OrganizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D2BB0204E657A0080BB92 /* mac_OrganizerTests.swift */; };
 		7F9D2BBC204E657A0080BB92 /* mac_OrganizerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D2BBB204E657A0080BB92 /* mac_OrganizerUITests.swift */; };
 		7FCD1791204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */; };
-		7FCD1793204F6E50007E8A63 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD1792204F6E50007E8A63 /* Files.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +48,7 @@
 		7F9D2BBB204E657A0080BB92 /* mac_OrganizerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mac_OrganizerUITests.swift; sourceTree = "<group>"; };
 		7F9D2BBD204E657A0080BB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDuplicatesViewController.swift; sourceTree = "<group>"; };
-		7FCD1792204F6E50007E8A63 /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Files.swift; sourceTree = "<group>"; };
+		7FCF1E6F2050F1960062FE97 /* mac Organizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mac Organizer.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +99,7 @@
 		7F9D2B9C204E657A0080BB92 /* mac Organizer */ = {
 			isa = PBXGroup;
 			children = (
-				7FCD1792204F6E50007E8A63 /* Files.swift */,
+				7FCF1E6F2050F1960062FE97 /* mac Organizer.entitlements */,
 				7F9D2B9D204E657A0080BB92 /* AppDelegate.swift */,
 				7F9D2B9F204E657A0080BB92 /* ViewController.swift */,
 				7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */,
@@ -199,6 +198,11 @@
 					7F9D2B99204E657A0080BB92 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					7F9D2BAB204E657A0080BB92 = {
 						CreatedOnToolsVersion = 9.2;
@@ -264,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FCD1791204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift in Sources */,
-				7FCD1793204F6E50007E8A63 /* Files.swift in Sources */,
 				7F9D2BA0204E657A0080BB92 /* ViewController.swift in Sources */,
 				7F9D2B9E204E657A0080BB92 /* AppDelegate.swift in Sources */,
 			);
@@ -423,6 +426,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "mac Organizer/mac Organizer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EJD538U5T2;
@@ -438,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "mac Organizer/mac Organizer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = EJD538U5T2;
