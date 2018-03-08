@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:mac Organizer.xcodeproj">
+      location = "self:/Users/shubhambatra/Desktop/XCode Projects/mac Organizer/macOrganizer.xcodeproj">
    </FileRef>
 </Workspace>

@@ -34,17 +34,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F9D2B9A204E657A0080BB92 /* mac Organizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac Organizer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9D2B9A204E657A0080BB92 /* macOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9D2B9D204E657A0080BB92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F9D2B9F204E657A0080BB92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F9D2BA1204E657A0080BB92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F9D2BA4204E657A0080BB92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F9D2BA6204E657A0080BB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F9D2BA7204E657A0080BB92 /* mac_Organizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mac_Organizer.entitlements; sourceTree = "<group>"; };
-		7F9D2BAC204E657A0080BB92 /* mac OrganizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mac OrganizerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9D2BAC204E657A0080BB92 /* macOrganizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macOrganizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9D2BB0204E657A0080BB92 /* mac_OrganizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mac_OrganizerTests.swift; sourceTree = "<group>"; };
 		7F9D2BB2204E657A0080BB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F9D2BB7204E657A0080BB92 /* mac OrganizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mac OrganizerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F9D2BB7204E657A0080BB92 /* macOrganizerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = macOrganizerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9D2BBB204E657A0080BB92 /* mac_OrganizerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mac_OrganizerUITests.swift; sourceTree = "<group>"; };
 		7F9D2BBD204E657A0080BB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDuplicatesViewController.swift; sourceTree = "<group>"; };
@@ -89,9 +89,9 @@
 		7F9D2B9B204E657A0080BB92 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7F9D2B9A204E657A0080BB92 /* mac Organizer.app */,
-				7F9D2BAC204E657A0080BB92 /* mac OrganizerTests.xctest */,
-				7F9D2BB7204E657A0080BB92 /* mac OrganizerUITests.xctest */,
+				7F9D2B9A204E657A0080BB92 /* macOrganizer.app */,
+				7F9D2BAC204E657A0080BB92 /* macOrganizerTests.xctest */,
+				7F9D2BB7204E657A0080BB92 /* macOrganizerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,9 +132,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7F9D2B99204E657A0080BB92 /* mac Organizer */ = {
+		7F9D2B99204E657A0080BB92 /* macOrganizer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F9D2BC0204E657A0080BB92 /* Build configuration list for PBXNativeTarget "mac Organizer" */;
+			buildConfigurationList = 7F9D2BC0204E657A0080BB92 /* Build configuration list for PBXNativeTarget "macOrganizer" */;
 			buildPhases = (
 				7F9D2B96204E657A0080BB92 /* Sources */,
 				7F9D2B97204E657A0080BB92 /* Frameworks */,
@@ -144,14 +144,14 @@
 			);
 			dependencies = (
 			);
-			name = "mac Organizer";
+			name = macOrganizer;
 			productName = "mac Organizer";
-			productReference = 7F9D2B9A204E657A0080BB92 /* mac Organizer.app */;
+			productReference = 7F9D2B9A204E657A0080BB92 /* macOrganizer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7F9D2BAB204E657A0080BB92 /* mac OrganizerTests */ = {
+		7F9D2BAB204E657A0080BB92 /* macOrganizerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F9D2BC3204E657A0080BB92 /* Build configuration list for PBXNativeTarget "mac OrganizerTests" */;
+			buildConfigurationList = 7F9D2BC3204E657A0080BB92 /* Build configuration list for PBXNativeTarget "macOrganizerTests" */;
 			buildPhases = (
 				7F9D2BA8204E657A0080BB92 /* Sources */,
 				7F9D2BA9204E657A0080BB92 /* Frameworks */,
@@ -162,14 +162,14 @@
 			dependencies = (
 				7F9D2BAE204E657A0080BB92 /* PBXTargetDependency */,
 			);
-			name = "mac OrganizerTests";
+			name = macOrganizerTests;
 			productName = "mac OrganizerTests";
-			productReference = 7F9D2BAC204E657A0080BB92 /* mac OrganizerTests.xctest */;
+			productReference = 7F9D2BAC204E657A0080BB92 /* macOrganizerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7F9D2BB6204E657A0080BB92 /* mac OrganizerUITests */ = {
+		7F9D2BB6204E657A0080BB92 /* macOrganizerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F9D2BC6204E657A0080BB92 /* Build configuration list for PBXNativeTarget "mac OrganizerUITests" */;
+			buildConfigurationList = 7F9D2BC6204E657A0080BB92 /* Build configuration list for PBXNativeTarget "macOrganizerUITests" */;
 			buildPhases = (
 				7F9D2BB3204E657A0080BB92 /* Sources */,
 				7F9D2BB4204E657A0080BB92 /* Frameworks */,
@@ -180,9 +180,9 @@
 			dependencies = (
 				7F9D2BB9204E657A0080BB92 /* PBXTargetDependency */,
 			);
-			name = "mac OrganizerUITests";
+			name = macOrganizerUITests;
 			productName = "mac OrganizerUITests";
-			productReference = 7F9D2BB7204E657A0080BB92 /* mac OrganizerUITests.xctest */;
+			productReference = 7F9D2BB7204E657A0080BB92 /* macOrganizerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +216,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7F9D2B95204E657A0080BB92 /* Build configuration list for PBXProject "mac Organizer" */;
+			buildConfigurationList = 7F9D2B95204E657A0080BB92 /* Build configuration list for PBXProject "macOrganizer" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -229,9 +229,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7F9D2B99204E657A0080BB92 /* mac Organizer */,
-				7F9D2BAB204E657A0080BB92 /* mac OrganizerTests */,
-				7F9D2BB6204E657A0080BB92 /* mac OrganizerUITests */,
+				7F9D2B99204E657A0080BB92 /* macOrganizer */,
+				7F9D2BAB204E657A0080BB92 /* macOrganizerTests */,
+				7F9D2BB6204E657A0080BB92 /* macOrganizerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -294,12 +294,12 @@
 /* Begin PBXTargetDependency section */
 		7F9D2BAE204E657A0080BB92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7F9D2B99204E657A0080BB92 /* mac Organizer */;
+			target = 7F9D2B99204E657A0080BB92 /* macOrganizer */;
 			targetProxy = 7F9D2BAD204E657A0080BB92 /* PBXContainerItemProxy */;
 		};
 		7F9D2BB9204E657A0080BB92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7F9D2B99204E657A0080BB92 /* mac Organizer */;
+			target = 7F9D2B99204E657A0080BB92 /* macOrganizer */;
 			targetProxy = 7F9D2BB8204E657A0080BB92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -467,7 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Shubham.mac-OrganizerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mac Organizer.app/Contents/MacOS/mac Organizer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/macOrganizer.app/Contents/MacOS/macOrganizer";
 			};
 			name = Debug;
 		};
@@ -484,7 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Shubham.mac-OrganizerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mac Organizer.app/Contents/MacOS/mac Organizer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/macOrganizer.app/Contents/MacOS/macOrganizer";
 			};
 			name = Release;
 		};
@@ -523,7 +523,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7F9D2B95204E657A0080BB92 /* Build configuration list for PBXProject "mac Organizer" */ = {
+		7F9D2B95204E657A0080BB92 /* Build configuration list for PBXProject "macOrganizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F9D2BBE204E657A0080BB92 /* Debug */,
@@ -532,7 +532,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F9D2BC0204E657A0080BB92 /* Build configuration list for PBXNativeTarget "mac Organizer" */ = {
+		7F9D2BC0204E657A0080BB92 /* Build configuration list for PBXNativeTarget "macOrganizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F9D2BC1204E657A0080BB92 /* Debug */,
@@ -541,7 +541,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F9D2BC3204E657A0080BB92 /* Build configuration list for PBXNativeTarget "mac OrganizerTests" */ = {
+		7F9D2BC3204E657A0080BB92 /* Build configuration list for PBXNativeTarget "macOrganizerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F9D2BC4204E657A0080BB92 /* Debug */,
@@ -550,7 +550,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F9D2BC6204E657A0080BB92 /* Build configuration list for PBXNativeTarget "mac OrganizerUITests" */ = {
+		7F9D2BC6204E657A0080BB92 /* Build configuration list for PBXNativeTarget "macOrganizerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F9D2BC7204E657A0080BB92 /* Debug */,

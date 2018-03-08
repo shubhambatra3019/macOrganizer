@@ -16,15 +16,20 @@ class ViewController: NSViewController, FileManagerDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getContents(path: "/Users/shubhambatra/Downloads")
+        
     }
+
     
     //Mark: To get all the Contents of Directory
     func getContents(path: String) {
         do {
             let files  = try fileManager.contentsOfDirectory(atPath: path)
             for file in files {
-                print(file)
+                let ext = file.fileExtension()
+                print(ext)
             }
+            print(files.count)
         }
         catch {
             print("Error")
@@ -34,10 +39,15 @@ class ViewController: NSViewController, FileManagerDelegate  {
     //Mark: Organize all the files in the array containing all file name.
     func organizeFiles(files: [String]) {
         
+        
     }
     
-    
-    
+    //Mark: Removes Subdirectories inside the Folder.
+    func removeFolders(files: [String]) {
+        
+        
+        
+    }
     
     override var representedObject: Any? {
         didSet {
@@ -48,3 +58,10 @@ class ViewController: NSViewController, FileManagerDelegate  {
 
 }
 
+extension String {
+    
+    func fileExtension() -> String {
+        return NSURL(fileURLWithPath: self).pathExtension ?? ""
+    }
+    
+}
