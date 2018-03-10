@@ -16,7 +16,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getContents(path: "/Users/shubhambatra/Downloads")
+       // getContents(path: "/Users/shubhambatra/Downloads")
         
     }
 
@@ -43,7 +43,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
     }
     
     @IBAction func importButton(_ sender: Any) {
-   
+        filesArray.removeAll()
         let folderPicker: NSOpenPanel = NSOpenPanel()
         
         folderPicker.allowsMultipleSelection = false
@@ -59,7 +59,11 @@ class ViewController: NSViewController, FileManagerDelegate  {
         do {
         
         let files = try fileManager.contentsOfDirectory(at: chosenFolder!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-        print(files)
+            for file in files {
+                filesArray.append(file.lastPathComponent)
+            }
+            print(filesArray)
+            print(filesArray.count)
         }
         catch {
             print(error.localizedDescription)
