@@ -674,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="mac_Organizer" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="macOrganizer" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -728,10 +728,23 @@
         <!--Organize-->
         <scene sceneID="IyH-AG-utX">
             <objects>
-                <viewController title="Organize" id="Z8c-NA-AlE" customClass="ViewController" customModule="mac_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Organize" id="Z8c-NA-AlE" customClass="ViewController" customModule="macOrganizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pkQ-S3-gbg">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0V-a4-7uc">
+                                <rect key="frame" x="301" y="197" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9N-wf-WNG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="importButton:" target="Z8c-NA-AlE" id="ATR-c1-h3v"/>
+                                </connections>
+                            </button>
+                        </subviews>
                     </view>
                 </viewController>
                 <customObject id="uAK-qt-lEG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -741,7 +754,7 @@
         <!--Delete Dupicates-->
         <scene sceneID="Bhc-kf-5RS">
             <objects>
-                <viewController title="Delete Dupicates" id="j0Z-IW-wkR" customClass="DeleteDuplicatesViewController" customModule="mac_Organizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Delete Dupicates" id="j0Z-IW-wkR" customClass="DeleteDuplicatesViewController" customModule="macOrganizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="sq1-Ar-NQb">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

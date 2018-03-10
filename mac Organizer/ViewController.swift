@@ -42,10 +42,35 @@ class ViewController: NSViewController, FileManagerDelegate  {
         
     }
     
+    @IBAction func importButton(_ sender: Any) {
+   
+        let folderPicker: NSOpenPanel = NSOpenPanel()
+        
+        folderPicker.allowsMultipleSelection = false
+        folderPicker.canChooseDirectories = true
+        folderPicker.canChooseFiles = false
+        
+        folderPicker.runModal()
+        
+        var chosenFolder = folderPicker.url
+        
+        print(chosenFolder)
+        
+        do {
+        
+        let files = try fileManager.contentsOfDirectory(at: chosenFolder!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        print(files)
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    
+    }
+    
     //Mark: Removes Subdirectories inside the Folder.
     func removeFolders(files: [String]) {
         
-        
+
         
     }
     
