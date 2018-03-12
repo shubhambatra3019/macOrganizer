@@ -11,8 +11,7 @@ import Foundation
 class fileType {
     
     class func getFileType(fileName: String) {
-        
-        isVideo(ext: fileName.fileExtension())
+        isDocument(ext: fileName.fileExtension())
     }
     
     class func isPDF(ext: String) -> Bool {
@@ -61,5 +60,18 @@ class fileType {
             print("File is not a video")
             return false
         }
+    }
+    
+    class func isDocument(ext: String) -> Bool {
+    
+        if(ext == "pages" || ext == "doc" || ext == "docx" || ext == "txt") {
+            print("File is a Document")
+            return true
+        }
+        else {
+            print("File is not a document")
+            return false
+        }
+    
     }
 }

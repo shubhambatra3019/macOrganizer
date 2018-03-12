@@ -58,6 +58,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
             if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeFolder)) {
             print("uti?.takeRetainedValue()")
             }*/
+            print(file)
             fileType.getFileType(fileName: file)
         }
         
