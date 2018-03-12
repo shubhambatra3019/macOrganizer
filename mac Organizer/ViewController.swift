@@ -15,24 +15,19 @@ class ViewController: NSViewController, FileManagerDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       // getContents(path: "/Users/shubhambatra/Downloads")
-        
     }
 
     
     //Mark: To get all the Contents of Directory
-    func getContents(path: String) {
+    func getContentsOfFolder(folder: URL) {
         do {
-            let files  = try fileManager.contentsOfDirectory(atPath: path)
+            let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             for file in files {
-                let ext = file.fileExtension()
-                print(ext)
+                filesArray.append(file.lastPathComponent)
             }
-            print(files.count)
         }
         catch {
-            print("Error")
+            print(error.localizedDescription)
         }
     }
     
@@ -45,37 +40,39 @@ class ViewController: NSViewController, FileManagerDelegate  {
     @IBAction func importButton(_ sender: Any) {
         filesArray.removeAll()
         let folderPicker: NSOpenPanel = NSOpenPanel()
-        
         folderPicker.allowsMultipleSelection = false
         folderPicker.canChooseDirectories = true
         folderPicker.canChooseFiles = false
-        
         folderPicker.runModal()
+        var folderPicked = folderPicker.url
+        getContentsOfFolder(folder: folderPicked!)
+        checkAndCreate(folderPicked: folderPicked!)
         
-        var chosenFolder = folderPicker.url
         
-        print(chosenFolder)
-        
-        do {
-        
-        let files = try fileManager.contentsOfDirectory(at: chosenFolder!, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            for file in files {
-                filesArray.append(file.lastPathComponent)
-            }
-            print(filesArray)
-            print(filesArray.count)
+       /*for file in filesArray {
+            let ext = file.fileExtension()
+            let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+            if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypePDF)) {
+            print("Its a PDF")
         }
-        catch {
-            print(error.localizedDescription)
-        }
-    
+        }*/
     }
     
-    //Mark: Removes Subdirectories inside the Folder.
-    func removeFolders(files: [String]) {
+    //Mark: Checks if the Organized Folder Already Exists. If not, Creates it.
+    
+    func checkAndCreate(folderPicked: URL) {
         
-
+        let pathComponent = folderPicked.appendingPathComponent("Organized")
+            let filePath = pathComponent.path
+            print(filePath)
+            if fileManager.fileExists(atPath: filePath) {
+                print("Folder Exists")
+            }
+            else {
+                print("Folder doesn't exist")
+            }
         
+    
     }
     
     override var representedObject: Any? {
