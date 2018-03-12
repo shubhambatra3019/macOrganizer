@@ -12,11 +12,10 @@ class fileType {
     
     class func getFileType(fileName: String) {
         
-        
+        isImage(ext: fileName.fileExtension())
     }
     
-    class func isPDF(fileName: String) -> Bool {
-        let ext = fileName.fileExtension()
+    class func isPDF(ext: String) -> Bool {
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
         if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypePDF)) {
            return true
@@ -26,6 +25,18 @@ class fileType {
         }
     }
     
-    
+    class func isImage(ext: String) -> Bool {
+        
+        let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+        if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeImage)) {
+            print("File is a Image")
+            return true
+        }
+        else {
+            print("File is not a Image")
+            return false
+        }
+        
+    }
     
 }
