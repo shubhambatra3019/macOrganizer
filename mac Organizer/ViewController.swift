@@ -59,7 +59,8 @@ class ViewController: NSViewController, FileManagerDelegate  {
             print("uti?.takeRetainedValue()")
             }*/
             print(file)
-            fileType.getFileType(fileName: file)
+            let filetype = fileType.getFileType(fileName: file)
+            print("File type is \(filetype)")
         }
         
     }
