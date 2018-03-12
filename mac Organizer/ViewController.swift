@@ -12,6 +12,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
 
     let fileManager:FileManager = FileManager()
     var filesArray: [String] = []
+    var foldersInOrganized: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         folderPicker.runModal()
         var folderPicked = folderPicker.url
         getContentsOfFolder(folder: folderPicked!)
-        checkAndCreate(folderPicked: folderPicked!)
+        checkAndCreateFolder(folderPicked: folderPicked!)
         
         
        /*for file in filesArray {
@@ -60,19 +61,20 @@ class ViewController: NSViewController, FileManagerDelegate  {
     
     //Mark: Checks if the Organized Folder Already Exists. If not, Creates it.
     
-    func checkAndCreate(folderPicked: URL) {
+    func checkAndCreateFolder(folderPicked: URL) {
         
         let pathComponent = folderPicked.appendingPathComponent("Organized")
             let filePath = pathComponent.path
             print(filePath)
-            if fileManager.fileExists(atPath: filePath) {
-                print("Folder Exists")
+            if !fileManager.fileExists(atPath: filePath) {
+                do {
+                    try fileManager.createDirectory(at: pathComponent, withIntermediateDirectories: true, attributes: nil)
+                    
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
             }
-            else {
-                print("Folder doesn't exist")
-            }
-        
-    
     }
     
     override var representedObject: Any? {
