@@ -12,7 +12,7 @@ class fileType {
     
     class func getFileType(fileName: String) {
         
-        isAudio(ext: fileName.fileExtension())
+        isVideo(ext: fileName.fileExtension())
     }
     
     class func isPDF(ext: String) -> Bool {
@@ -51,4 +51,15 @@ class fileType {
         }
     }
     
+    class func isVideo(ext: String) -> Bool {
+        let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+        if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeMovie)) {
+            print("File is a Video")
+            return true
+        }
+        else {
+            print("File is not a video")
+            return false
+        }
+    }
 }
