@@ -11,7 +11,7 @@ import Foundation
 class fileType {
     
     class func getFileType(fileName: String) {
-        isDocument(ext: fileName.fileExtension())
+        isArchive(ext: fileName.fileExtension())
     }
     
     class func isPDF(ext: String) -> Bool {
@@ -72,6 +72,41 @@ class fileType {
             print("File is not a document")
             return false
         }
+    }
     
+    class func isSpreadsheet(ext: String) -> Bool {
+        let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+        if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeSpreadsheet)) {
+            print("File is a Spreadsheet")
+            return true
+        }
+        else {
+            print("File is not a Spreadsheet")
+            return false
+        }
+    }
+    
+    class func isPresentation(ext: String) -> Bool {
+        let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+        if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypePresentation)) {
+            print("File is a Presentation")
+            return true
+        }
+        else {
+            print("File is not a Presentation")
+            return false
+        }
+    }
+    
+    class func isArchive(ext: String) -> Bool {
+        let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+        if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeArchive)) {
+            print("File is an Archive")
+            return true
+        }
+        else {
+            print("File is not an Archive")
+            return false
+        }
     }
 }
