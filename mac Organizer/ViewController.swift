@@ -48,15 +48,18 @@ class ViewController: NSViewController, FileManagerDelegate  {
         var folderPicked = folderPicker.url
         getContentsOfFolder(folder: folderPicked!)
         checkAndCreateFolder(folderPicked: folderPicked!)
-        
-        
-      /* for file in filesArray {
-            let ext = file.fileExtension()
-            let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
-            if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTType)) {
-            print("Its a PDF")
-        }
+        /*for file in filesArray {
+            print(file)
         }*/
+        
+       for file in filesArray {
+          /*  let ext = file.fileExtension()
+            let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+            if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeFolder)) {
+            print("uti?.takeRetainedValue()")
+            }*/
+        fileType.getFileType(fileName: file)
+        }
         
     }
     
@@ -80,6 +83,10 @@ class ViewController: NSViewController, FileManagerDelegate  {
                 }
             }
     }
+    
+    
+    
+    
     
     override var representedObject: Any? {
         didSet {

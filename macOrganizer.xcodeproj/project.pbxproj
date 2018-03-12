@@ -14,6 +14,7 @@
 		7F9D2BB1204E657A0080BB92 /* mac_OrganizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D2BB0204E657A0080BB92 /* mac_OrganizerTests.swift */; };
 		7F9D2BBC204E657A0080BB92 /* mac_OrganizerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D2BBB204E657A0080BB92 /* mac_OrganizerUITests.swift */; };
 		7FCD1791204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */; };
+		7FCF1E7620571CE80062FE97 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF1E7520571CE80062FE97 /* FileType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7F9D2BBD204E657A0080BB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDuplicatesViewController.swift; sourceTree = "<group>"; };
 		7FCF1E6F2050F1960062FE97 /* mac Organizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mac Organizer.entitlements"; sourceTree = "<group>"; };
+		7FCF1E7520571CE80062FE97 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				7FCF1E6F2050F1960062FE97 /* mac Organizer.entitlements */,
 				7F9D2B9D204E657A0080BB92 /* AppDelegate.swift */,
+				7FCF1E7520571CE80062FE97 /* FileType.swift */,
 				7F9D2B9F204E657A0080BB92 /* ViewController.swift */,
 				7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */,
 				7F9D2BA1204E657A0080BB92 /* Assets.xcassets */,
@@ -270,6 +273,7 @@
 				7FCD1791204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift in Sources */,
 				7F9D2BA0204E657A0080BB92 /* ViewController.swift in Sources */,
 				7F9D2B9E204E657A0080BB92 /* AppDelegate.swift in Sources */,
+				7FCF1E7620571CE80062FE97 /* FileType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
