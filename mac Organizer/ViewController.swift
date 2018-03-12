@@ -12,7 +12,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
 
     let fileManager:FileManager = FileManager()
     var filesArray: [String] = []
-    var foldersInOrganized: [String] = []
+    var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archieves", "Other"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,13 +50,14 @@ class ViewController: NSViewController, FileManagerDelegate  {
         checkAndCreateFolder(folderPicked: folderPicked!)
         
         
-       /*for file in filesArray {
+      /* for file in filesArray {
             let ext = file.fileExtension()
             let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
-            if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypePDF)) {
+            if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTType)) {
             print("Its a PDF")
         }
         }*/
+        
     }
     
     //Mark: Checks if the Organized Folder Already Exists. If not, Creates it.
@@ -65,11 +66,14 @@ class ViewController: NSViewController, FileManagerDelegate  {
         
         let pathComponent = folderPicked.appendingPathComponent("Organized")
             let filePath = pathComponent.path
-            print(filePath)
+          //  print(filePath)
             if !fileManager.fileExists(atPath: filePath) {
                 do {
                     try fileManager.createDirectory(at: pathComponent, withIntermediateDirectories: true, attributes: nil)
-                    
+                    for folder in foldersInOrganized {
+                        let subDirectory = pathComponent.appendingPathComponent(folder)
+                        try fileManager.createDirectory(at: subDirectory, withIntermediateDirectories: false, attributes: nil)
+                    }
                 }
                 catch {
                     print(error.localizedDescription)
