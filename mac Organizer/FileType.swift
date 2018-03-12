@@ -13,7 +13,17 @@ class fileType {
     class func getFileType(fileName: String) {
         
         
-        
+    }
+    
+    class func isPDF(fileName: String) -> Bool {
+        let ext = fileName.fileExtension()
+        let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
+        if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypePDF)) {
+           return true
+        }
+        else {
+            return false
+        }
     }
     
     
