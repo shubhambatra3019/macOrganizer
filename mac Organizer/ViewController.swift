@@ -54,14 +54,16 @@ class ViewController: NSViewController, FileManagerDelegate  {
         folderPicker.allowsMultipleSelection = false
         folderPicker.canChooseDirectories = true
         folderPicker.canChooseFiles = false
-        folderPicker.runModal()
-        //Todo: IF Choose is pressed do this.
+        let button = folderPicker.runModal()
+        if(button.rawValue == NSOKButton) {
         var folderPicked = folderPicker.url
         getContentsOfFolder(folder: folderPicked!)
         checkAndCreateFolder(folderPicked: folderPicked!)
         organizeFiles(folderPicked: folderPicked!)
-        
-       
+        }
+        else {
+            print("Action canceled")
+        }
     }
     
     func moveFiles(from: URL, to: URL) {
@@ -93,6 +95,9 @@ class ViewController: NSViewController, FileManagerDelegate  {
                 catch {
                     print(error.localizedDescription)
                 }
+            }
+            else {
+                //Todo:If folder already exists.
             }
     }
     
