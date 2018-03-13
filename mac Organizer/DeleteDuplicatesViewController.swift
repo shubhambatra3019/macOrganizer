@@ -13,10 +13,22 @@ class DeleteDuplicatesViewController: NSViewController {
     let fileManager:FileManager = FileManager()
     var filesArray: [String] = []
     
+    func getFileNamesWithoutExtenion(folder: URL) {
+        do {
+            filesArray.removeAll()
+            let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            for file in files {
+                filesArray.append(file.deletingPathExtension().lastPathComponent)
+            }
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
     
 
     @IBAction func importButton(_ sender: Any) {
-        filesArray.removeAll()
+       
         let folderPicker: NSOpenPanel = NSOpenPanel()
         folderPicker.allowsMultipleSelection = false
         folderPicker.canChooseDirectories = true
@@ -24,16 +36,9 @@ class DeleteDuplicatesViewController: NSViewController {
         let button = folderPicker.runModal()
         if(button.rawValue == NSOKButton) {
             var folderPicked = folderPicker.url
-            func getContentsOfFolder(folder: URL) {
-                do {
-                    let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                    for file in files {
-                        filesArray.append(file.lastPathComponent)
-                    }
-                }
-                catch {
-                    print(error.localizedDescription)
-                }
+            getFileNamesWithoutExtenion(folder: folderPicked!)
+            for file in filesArray {
+                
             }
         
         }
