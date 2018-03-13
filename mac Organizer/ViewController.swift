@@ -45,6 +45,8 @@ class ViewController: NSViewController, FileManagerDelegate  {
         folderPicker.canChooseDirectories = true
         folderPicker.canChooseFiles = false
         folderPicker.runModal()
+        
+        
         var folderPicked = folderPicker.url
         getContentsOfFolder(folder: folderPicked!)
         checkAndCreateFolder(folderPicked: folderPicked!)
@@ -53,16 +55,26 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }*/
         
        for file in filesArray {
-          /*  let ext = file.fileExtension()
-            let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, ext as CFString, nil)
-            if(UTTypeConformsTo((uti?.takeRetainedValue())!, kUTTypeFolder)) {
-            print("uti?.takeRetainedValue()")
-            }*/
-            print(file)
-            let filetype = fileType.getFileType(fileName: file)
-            print("File type is \(filetype)")
+          let filetype = fileType.getFileType(fileName: file)
+        if(filetype != "Folder") {
+            let filePath = folderPicked?.appendingPathComponent(file)
+            var destinationPath = folderPicked?.appendingPathComponent("Organized")
+            destinationPath = destinationPath?.appendingPathComponent(filetype)
+            destinationPath = destinationPath?.appendingPathComponent(file)
+            moveFiles(from: filePath!, to: destinationPath!)
         }
+        }
+    }
+    
+    func moveFiles(from: URL, to: URL) {
         
+        do {
+            try fileManager.moveItem(at: from, to: to)
+            print("Move Successful")
+        }
+        catch {
+            print(error.localizedDescription)
+        }
     }
     
     //Mark: Checks if the Organized Folder Already Exists. If not, Creates it.

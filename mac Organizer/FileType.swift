@@ -25,7 +25,7 @@ class fileType {
             return "Documents"
         }
         else if(isVideo(ext: ext)) {
-            return "Videos"
+            return "Video"
         }
         else if(isPresentation(ext: ext)) {
             return "Presentation"
@@ -37,10 +37,10 @@ class fileType {
             return "Audio"
         }
         else if(isArchive(ext: ext)) {
-            return "Archive"
+            return "Archieves"
         }
         else {
-            return "Unidentified Object"
+            return "Other"
         }
     }
     
