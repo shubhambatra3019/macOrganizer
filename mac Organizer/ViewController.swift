@@ -33,8 +33,18 @@ class ViewController: NSViewController, FileManagerDelegate  {
     }
     
     //Mark: Organize all the files in the array containing all file name.
-    func organizeFiles(files: [String]) {
+    func organizeFiles(folderPicked: URL) {
         
+        for file in filesArray {
+            let filetype = fileType.getFileType(fileName: file)
+            if(filetype != "Folder") {
+                let filePath = folderPicked.appendingPathComponent(file)
+                var destinationPath = folderPicked.appendingPathComponent("Organized")
+                destinationPath = destinationPath.appendingPathComponent(filetype)
+                destinationPath = destinationPath.appendingPathComponent(file)
+                moveFiles(from: filePath, to: destinationPath)
+            }
+        }
         
     }
     
@@ -45,25 +55,13 @@ class ViewController: NSViewController, FileManagerDelegate  {
         folderPicker.canChooseDirectories = true
         folderPicker.canChooseFiles = false
         folderPicker.runModal()
-        
-        
+        //Todo: IF Choose is pressed do this.
         var folderPicked = folderPicker.url
         getContentsOfFolder(folder: folderPicked!)
         checkAndCreateFolder(folderPicked: folderPicked!)
-        /*for file in filesArray {
-            print(file)
-        }*/
+        organizeFiles(folderPicked: folderPicked!)
         
-       for file in filesArray {
-          let filetype = fileType.getFileType(fileName: file)
-        if(filetype != "Folder") {
-            let filePath = folderPicked?.appendingPathComponent(file)
-            var destinationPath = folderPicked?.appendingPathComponent("Organized")
-            destinationPath = destinationPath?.appendingPathComponent(filetype)
-            destinationPath = destinationPath?.appendingPathComponent(file)
-            moveFiles(from: filePath!, to: destinationPath!)
-        }
-        }
+       
     }
     
     func moveFiles(from: URL, to: URL) {
