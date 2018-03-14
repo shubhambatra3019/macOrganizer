@@ -55,8 +55,11 @@ class DeleteDuplicatesViewController: NSViewController {
     func isDuplicate(file: String) -> Bool {
         let fileName = file.fileName()
         let length = fileName.characters.count
-        if(length >= 3) {
+        if(length >= 4) {
             if(fileName[length-1] == ")" && fileName[length-3] == "(") {
+                return true
+            }
+            else if(fileName[length-1] == "y" && fileName[length-2] == "p" && fileName[length-3] == "o" && fileName[length-4] == "c") {
                 return true
             }
         }
@@ -101,10 +104,7 @@ class DeleteDuplicatesViewController: NSViewController {
         if(button.rawValue == NSOKButton) {
             var folderPicked = folderPicker.url
             getFiles(folder: folderPicked!)
-          //  CleanMac(files: filesArray)
-            for file in filesArray {
-                print(file)
-            }
+            CleanMac(files: filesArray)
         }
     }
     
