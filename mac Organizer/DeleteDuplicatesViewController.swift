@@ -32,14 +32,25 @@ class DeleteDuplicatesViewController: NSViewController {
     func isDuplicate(file: String) -> Bool {
         
         let fileName = file.fileName()
-        print("fileName")
-        return true
+        let length = fileName.characters.count
+        if(length >= 3) {
+            if(fileName[length-1] == ")" && fileName[length-3] == "(") {
+                return true
+            }
+        }
+        return false
         
+    }
+    
+    func isZipFile(file: String) -> Bool {
+        let fileExtension = file.fileExtension()
+        if()
     }
     
     func deleteDuplicates(files: [String]) {
         var i = 0
-        for file in files {
+        
+        /*for file in files {
             let length = file.characters.count
             //print(length)
             if(length >= 3) {
@@ -55,7 +66,7 @@ class DeleteDuplicatesViewController: NSViewController {
                 }
             }
             i = i+1
-        }
+        }*/
     }
     
     
