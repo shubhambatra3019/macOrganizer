@@ -18,7 +18,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         super.viewDidLoad()
     }
 
-    //Mark: Get Contents of Directory
+    //MARK: Get Contents of Directory
     func getContentsOfFolder(folder: URL) {
         filesArray.removeAll()
         do {
@@ -32,7 +32,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }
     }
     
-    //Mark: Organize all the files in the array containing all file name.
+    //MARK: Organize all the files in the array containing all file name.
     func organizeFiles(folderPicked: URL) {
         for file in filesArray {
             let filetype = fileType.getFileType(fileName: file)
@@ -46,7 +46,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }
     }
     
-    //Mark: Button to Pick Folder
+    //MARK: Button to Pick Folder
     @IBAction func importButton(_ sender: Any) {
         let folderPicker: NSOpenPanel = NSOpenPanel()
         folderPicker.allowsMultipleSelection = false
@@ -64,7 +64,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }
     }
     
-    //Mark: Moves Files
+    //MARK: Moves Files
     func moveFiles(from: URL, to: URL) {
         do {
             try fileManager.moveItem(at: from, to: to)
@@ -75,7 +75,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }
     }
     
-    //Mark: Checks if the Organized Folder Already Exists. If not, Creates it.
+    //MARK: Checks if the Organized Folder Already Exists. If not, Creates it.
     func checkAndCreateFolder(folderPicked: URL) {
         let pathComponent = folderPicked.appendingPathComponent("Organized")
         let filePath = pathComponent.path
@@ -103,7 +103,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
     }
 }
 
-//Mark: String Functions
+//MARK: String Functions
 extension String {
     func fileExtension() -> String {
         return NSURL(fileURLWithPath: self).pathExtension ?? ""

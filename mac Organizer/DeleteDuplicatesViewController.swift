@@ -14,7 +14,7 @@ class DeleteDuplicatesViewController: NSViewController {
     var filesArray: [String] = []
     var filesURL: [URL] = []
     
-    //Mark: Get Contents of Directory
+    //MARK: Get Contents of Directory
     func getFiles(folder: URL) {
         do {
             filesArray.removeAll()
@@ -24,13 +24,34 @@ class DeleteDuplicatesViewController: NSViewController {
             for file in files {
                 filesArray.append(file.lastPathComponent)
             }
+            getContentsOfFolderInDirectories(folder: folder)
         }
         catch {
             print(error.localizedDescription)
         }
     }
     
-    //Mark: Checks if file is a Duplicate
+    func getContentsOfFolderInDirectories(folder: URL) {
+        
+        for file in filesArray {
+            if(fileType.getFileType(fileName: file) == "Folder")
+            {
+                let folderURL = folder.appendingPathComponent(file)
+                do {
+                    let subFiles = try fileManager.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                    filesURL += subFiles
+                    for file in subFiles {
+                        filesArray.append(file.lastPathComponent)
+                    }
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    //MARK: Checks if file is a Duplicate
     func isDuplicate(file: String) -> Bool {
         let fileName = file.fileName()
         let length = fileName.characters.count
@@ -42,7 +63,7 @@ class DeleteDuplicatesViewController: NSViewController {
         return false
     }
     
-    //Mark: Checks if file is Archive
+    //MARK: Checks if file is Archive
     func isArchiveFile(file: String) -> Bool {
         if(fileType.getFileType(fileName: file) == "Archieves") {
             return true
@@ -52,7 +73,7 @@ class DeleteDuplicatesViewController: NSViewController {
         }
     }
     
-    //Mark: Deletes Duplicates and Archives
+    //MARK: Deletes Duplicates and Archives
     func CleanMac(files: [String]) {
         var i = 0
         for file in files {
@@ -70,7 +91,7 @@ class DeleteDuplicatesViewController: NSViewController {
         }
     }
     
-    //Mark: Button to Pick Folder
+    //MARK: Button to Pick Folder
     @IBAction func importButton(_ sender: Any) {
         let folderPicker: NSOpenPanel = NSOpenPanel()
         folderPicker.allowsMultipleSelection = false
@@ -80,7 +101,10 @@ class DeleteDuplicatesViewController: NSViewController {
         if(button.rawValue == NSOKButton) {
             var folderPicked = folderPicker.url
             getFiles(folder: folderPicked!)
-            CleanMac(files: filesArray)
+          //  CleanMac(files: filesArray)
+            for file in filesArray {
+                print(file)
+            }
         }
     }
     
