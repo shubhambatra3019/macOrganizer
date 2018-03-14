@@ -21,12 +21,20 @@ class DeleteDuplicatesViewController: NSViewController {
             let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             filesURL = files
             for file in files {
-                filesArray.append(file.deletingPathExtension().lastPathComponent)
+                filesArray.append(file.lastPathComponent)
             }
         }
         catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func isDuplicate(file: String) -> Bool {
+        
+        let fileName = file.fileName()
+        print("fileName")
+        return true
+        
     }
     
     func deleteDuplicates(files: [String]) {
@@ -46,10 +54,16 @@ class DeleteDuplicatesViewController: NSViewController {
                     })
                 }
             }
-            i = i+1;
+            i = i+1
         }
     }
     
+    
+    
+ /*   func deleteZipFiles(files: [String]) {
+        var i = 
+    }
+    */
     
     
     @IBAction func importButton(_ sender: Any) {

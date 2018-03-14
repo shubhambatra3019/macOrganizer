@@ -119,6 +119,9 @@ extension String {
     func fileExtension() -> String {
         return NSURL(fileURLWithPath: self).pathExtension ?? ""
     }
+    func fileName() -> String {
+        return NSURL(fileURLWithPath: self).deletingPathExtension?.lastPathComponent ?? ""
+    }
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
