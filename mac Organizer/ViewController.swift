@@ -18,9 +18,9 @@ class ViewController: NSViewController, FileManagerDelegate  {
         super.viewDidLoad()
     }
 
-    
-    //Mark: To get all the Contents of Directory
+    //Mark: Get Contents of Directory
     func getContentsOfFolder(folder: URL) {
+        filesArray.removeAll()
         do {
             let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             for file in files {
@@ -34,7 +34,6 @@ class ViewController: NSViewController, FileManagerDelegate  {
     
     //Mark: Organize all the files in the array containing all file name.
     func organizeFiles(folderPicked: URL) {
-        
         for file in filesArray {
             let filetype = fileType.getFileType(fileName: file)
             if(filetype != "Folder") {
@@ -45,29 +44,28 @@ class ViewController: NSViewController, FileManagerDelegate  {
                 moveFiles(from: filePath, to: destinationPath)
             }
         }
-        
     }
     
+    //Mark: Button to Pick Folder
     @IBAction func importButton(_ sender: Any) {
-        filesArray.removeAll()
         let folderPicker: NSOpenPanel = NSOpenPanel()
         folderPicker.allowsMultipleSelection = false
         folderPicker.canChooseDirectories = true
         folderPicker.canChooseFiles = false
         let button = folderPicker.runModal()
         if(button.rawValue == NSOKButton) {
-        var folderPicked = folderPicker.url
-        getContentsOfFolder(folder: folderPicked!)
-        checkAndCreateFolder(folderPicked: folderPicked!)
-        organizeFiles(folderPicked: folderPicked!)
+            var folderPicked = folderPicker.url
+            getContentsOfFolder(folder: folderPicked!)
+            checkAndCreateFolder(folderPicked: folderPicked!)
+            organizeFiles(folderPicked: folderPicked!)
         }
         else {
             print("Action canceled")
         }
     }
     
+    //Mark: Moves Files
     func moveFiles(from: URL, to: URL) {
-        
         do {
             try fileManager.moveItem(at: from, to: to)
             print("Move Successful")
@@ -78,44 +76,35 @@ class ViewController: NSViewController, FileManagerDelegate  {
     }
     
     //Mark: Checks if the Organized Folder Already Exists. If not, Creates it.
-    
     func checkAndCreateFolder(folderPicked: URL) {
-        
         let pathComponent = folderPicked.appendingPathComponent("Organized")
-            let filePath = pathComponent.path
-          //  print(filePath)
-            if !fileManager.fileExists(atPath: filePath) {
-                do {
-                    try fileManager.createDirectory(at: pathComponent, withIntermediateDirectories: true, attributes: nil)
-                    for folder in foldersInOrganized {
-                        let subDirectory = pathComponent.appendingPathComponent(folder)
-                        try fileManager.createDirectory(at: subDirectory, withIntermediateDirectories: false, attributes: nil)
-                    }
-                }
-                catch {
-                    print(error.localizedDescription)
+        let filePath = pathComponent.path
+        if !fileManager.fileExists(atPath: filePath) {
+            do {
+                try fileManager.createDirectory(at: pathComponent, withIntermediateDirectories: true, attributes: nil)
+                for folder in foldersInOrganized {
+                    let subDirectory = pathComponent.appendingPathComponent(folder)
+                    try fileManager.createDirectory(at: subDirectory, withIntermediateDirectories: false, attributes: nil)
                 }
             }
-            else {
-                //Todo:If folder already exists.
+            catch {
+                print(error.localizedDescription)
             }
+        }
+        else {
+            //Todo:If folder already exists.
+        }
     }
-    
-    
-    
-    
     
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }
     }
-
-
 }
 
+//Mark: String Functions
 extension String {
-    
     func fileExtension() -> String {
         return NSURL(fileURLWithPath: self).pathExtension ?? ""
     }
