@@ -21,7 +21,7 @@ class DeleteDuplicatesViewController: NSViewController {
             filesURL.removeAll()
            // let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             let files = try fileManager.subpathsOfDirectory(atPath: folder.path)
-           // filesURL = files
+            //filesURL = files
             for file in files {
                 filesArray.append(file)
             }
@@ -77,6 +77,11 @@ class DeleteDuplicatesViewController: NSViewController {
         }
     }
     
+    func getFileUrl(file: String, relativeFolder: URL) -> URL {
+        let fileURL = NSURL(fileURLWithPath: file, relativeTo: relativeFolder)
+        return NSURL.fileURL(withPath: fileURL.path!)
+    }
+    
     //MARK: Deletes Duplicates and Archives
     func CleanMac(files: [String]) {
         var i = 0
@@ -84,7 +89,7 @@ class DeleteDuplicatesViewController: NSViewController {
             if(isDuplicate(file: file) || isArchiveFile(file: file)) {
                 NSWorkspace.shared.recycle([filesURL[i]], completionHandler: { (trashedFiles, error) in
                     if(error != nil) {
-                        print(error)
+                        print(error?.localizedDescription)
                     }
                     else {
                         print("Moved to trash")
@@ -103,12 +108,10 @@ class DeleteDuplicatesViewController: NSViewController {
         folderPicker.canChooseFiles = false
         let button = folderPicker.runModal()
         if(button.rawValue == NSOKButton) {
-            var folderPicked = folderPicker.url
+            let folderPicked = folderPicker.url
             getFiles(folder: folderPicked!)
            // CleanMac(files: filesArray)
-            for file in filesArray {
-                print(file)
-            }
+            
         }
     }
     
