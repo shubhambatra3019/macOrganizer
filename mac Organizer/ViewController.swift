@@ -58,6 +58,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
             getContentsOfFolder(folder: folderPicked!)
             checkAndCreateFolder(folderPicked: folderPicked!)
             organizeFiles(folderPicked: folderPicked!)
+            removeEmptyFolders(folderPicked: folderPicked!)
         }
         else {
             print("Action canceled")
@@ -75,6 +76,26 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }
     }
     
+    //MARK: Remove Empty Folders in Organized
+    func removeEmptyFolders(folderPicked: URL) {
+        let pathComponent = folderPicked.appendingPathComponent("Organized")
+        let filePath = pathComponent.path
+        for folder in foldersInOrganized {
+            do {
+                let subDir = pathComponent.appendingPathComponent(folder)
+                let contents = try fileManager.contentsOfDirectory(at: subDir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                if(contents.count == 0) {
+                    try fileManager.removeItem(at: subDir)
+                }
+                else {
+                    print("Folder has contents")
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
     //MARK: Checks if the Organized Folder Already Exists. If not, Creates it.
     func checkAndCreateFolder(folderPicked: URL) {
         let pathComponent = folderPicked.appendingPathComponent("Organized")
