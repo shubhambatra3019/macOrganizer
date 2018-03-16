@@ -15,6 +15,7 @@
 		7F9D2BBC204E657A0080BB92 /* mac_OrganizerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9D2BBB204E657A0080BB92 /* mac_OrganizerUITests.swift */; };
 		7FCD1791204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */; };
 		7FCF1E7620571CE80062FE97 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF1E7520571CE80062FE97 /* FileType.swift */; };
+		7FCF1E8A205908490062FE97 /* DropBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF1E89205908490062FE97 /* DropBoxViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		7FCD1790204F4AC4007E8A63 /* DeleteDuplicatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDuplicatesViewController.swift; sourceTree = "<group>"; };
 		7FCF1E6F2050F1960062FE97 /* mac Organizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "mac Organizer.entitlements"; sourceTree = "<group>"; };
 		7FCF1E7520571CE80062FE97 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
+		7FCF1E89205908490062FE97 /* DropBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBoxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7FCF1E6F2050F1960062FE97 /* mac Organizer.entitlements */,
+				7FCF1E89205908490062FE97 /* DropBoxViewController.swift */,
 				7F9D2B9D204E657A0080BB92 /* AppDelegate.swift */,
 				7FCF1E7520571CE80062FE97 /* FileType.swift */,
 				7F9D2B9F204E657A0080BB92 /* ViewController.swift */,
@@ -274,6 +277,7 @@
 				7F9D2BA0204E657A0080BB92 /* ViewController.swift in Sources */,
 				7F9D2B9E204E657A0080BB92 /* AppDelegate.swift in Sources */,
 				7FCF1E7620571CE80062FE97 /* FileType.swift in Sources */,
+				7FCF1E8A205908490062FE97 /* DropBoxViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

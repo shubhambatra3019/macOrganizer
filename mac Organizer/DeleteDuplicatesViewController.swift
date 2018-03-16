@@ -19,12 +19,13 @@ class DeleteDuplicatesViewController: NSViewController {
         do {
             filesArray.removeAll()
             filesURL.removeAll()
-            let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            filesURL = files
+           // let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            let files = try fileManager.subpathsOfDirectory(atPath: folder.path)
+           // filesURL = files
             for file in files {
-                filesArray.append(file.lastPathComponent)
+                filesArray.append(file)
             }
-            getContentsOfFolderInDirectories(folder: folder)
+            //getContentsOfFolderInDirectories(folder: folder)
         }
         catch {
             print(error.localizedDescription)
@@ -104,7 +105,10 @@ class DeleteDuplicatesViewController: NSViewController {
         if(button.rawValue == NSOKButton) {
             var folderPicked = folderPicker.url
             getFiles(folder: folderPicked!)
-            CleanMac(files: filesArray)
+           // CleanMac(files: filesArray)
+            for file in filesArray {
+                print(file)
+            }
         }
     }
     
