@@ -19,36 +19,13 @@ class DeleteDuplicatesViewController: NSViewController {
         do {
             filesArray.removeAll()
             filesURL.removeAll()
-           // let files = try fileManager.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             let files = try fileManager.subpathsOfDirectory(atPath: folder.path)
-            //filesURL = files
             for file in files {
                 filesArray.append(file)
             }
-            //getContentsOfFolderInDirectories(folder: folder)
         }
         catch {
             print(error.localizedDescription)
-        }
-    }
-    
-    func getContentsOfFolderInDirectories(folder: URL) {
-        
-        for file in filesArray {
-            if(fileType.getFileType(fileName: file) == "Folder")
-            {
-                let folderURL = folder.appendingPathComponent(file)
-                do {
-                    let subFiles = try fileManager.contentsOfDirectory(at: folderURL, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                    filesURL += subFiles
-                    for file in subFiles {
-                        filesArray.append(file.lastPathComponent)
-                    }
-                }
-                catch {
-                    print(error.localizedDescription)
-                }
-            }
         }
     }
     
@@ -77,6 +54,7 @@ class DeleteDuplicatesViewController: NSViewController {
         }
     }
     
+    //MARK: Get URL from file Name
     func getFileUrl(file: String, relativeFolder: URL) -> URL {
         let fileURL = NSURL(fileURLWithPath: file, relativeTo: relativeFolder)
         return NSURL.fileURL(withPath: fileURL.path!)
