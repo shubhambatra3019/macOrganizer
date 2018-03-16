@@ -79,7 +79,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
     func checkAndCreateFolder(folderPicked: URL) {
         let pathComponent = folderPicked.appendingPathComponent("Organized")
         let filePath = pathComponent.path
-        if !fileManager.fileExists(atPath: filePath) {
+        if (!fileManager.fileExists(atPath: filePath)) {
             do {
                 try fileManager.createDirectory(at: pathComponent, withIntermediateDirectories: true, attributes: nil)
                 for folder in foldersInOrganized {
@@ -92,7 +92,17 @@ class ViewController: NSViewController, FileManagerDelegate  {
             }
         }
         else {
-            //Todo:If folder already exists.
+            do {
+                for folder in foldersInOrganized {
+                    let subDirectory = pathComponent.appendingPathComponent(folder)
+                    if(!fileManager.fileExists(atPath: subDirectory.path)) {
+                        try fileManager.createDirectory(at: subDirectory, withIntermediateDirectories: false, attributes: nil)
+                    }
+                }
+            }
+            catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
