@@ -138,6 +138,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
         }
     }
     
+    //MARK: Generates a random new fileName
     func generateRandomName(for file: String) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
