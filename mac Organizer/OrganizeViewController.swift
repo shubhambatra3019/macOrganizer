@@ -12,7 +12,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
 
     let fileManager:FileManager = FileManager()
     var filesArray: [String] = []
-    var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archieves", "Other"]
+    var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archieves", "Duplicates", "Other"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
                 var destinationPath = folderPicked.appendingPathComponent("Organized")
                 destinationPath = destinationPath.appendingPathComponent(filetype)
                 destinationPath = destinationPath.appendingPathComponent(file)
-                moveFiles(from: filePath, to: destinationPath)
+                moveFile(file: file, from: filePath, to: destinationPath)
             }
         }
     }
@@ -66,13 +66,23 @@ class ViewController: NSViewController, FileManagerDelegate  {
     }
     
     //MARK: Moves Files
-    func moveFiles(from: URL, to: URL) {
+    func moveFile(file: String, from: URL, to: URL) {
         do {
             try fileManager.moveItem(at: from, to: to)
             print("Move Successful")
         }
         catch {
-            print(error.localizedDescription)
+            var destinationUrl = to
+            destinationUrl.deleteLastPathComponent()
+            destinationUrl.deleteLastPathComponent()
+            let randomFileName = generateRandomName(for: file)
+            destinationUrl =  destinationUrl.appendingPathComponent("Duplicates").appendingPathComponent(randomFileName)
+            do {
+                try fileManager.moveItem(at: from, to: destinationUrl)
+            }
+            catch {
+                print(error.localizedDescription + "File Can't be moved")
+            }
         }
     }
     
@@ -96,6 +106,7 @@ class ViewController: NSViewController, FileManagerDelegate  {
             }
         }
     }
+    
     //MARK: Checks if the Organized Folder Already Exists. If not, Creates it.
     func checkAndCreateFolder(folderPicked: URL) {
         let pathComponent = folderPicked.appendingPathComponent("Organized")
@@ -125,6 +136,22 @@ class ViewController: NSViewController, FileManagerDelegate  {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func generateRandomName(for file: String) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< 10 {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        randomString += ".\(file.fileExtension())"
+        return randomString
     }
     
     override var representedObject: Any? {
