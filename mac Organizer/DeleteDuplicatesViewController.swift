@@ -38,6 +38,9 @@ class DeleteDuplicatesViewController: NSViewController {
             else if(fileName[length-1] == "y" && fileName[length-2] == "p" && fileName[length-3] == "o" && fileName[length-4] == "c") {
                 return true
             }
+            else if(fileName.range(of: "Duplicate") != nil) {
+                return true
+            }
         }
         return false
     }
