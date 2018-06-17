@@ -8,14 +8,21 @@
 
 import Cocoa
 
-class ViewController: NSViewController, FileManagerDelegate  {
+class OrganizeViewController: NSViewController, FileManagerDelegate  {
 
     let fileManager:FileManager = FileManager()
     var filesArray: [String] = []
     var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archieves", "Duplicates", "Other"]
+    @IBOutlet var folderPickedLabel: NSTextField!
+    
+    var folderPicked = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLayoutConstraint.activate([
+            self.view.widthAnchor.constraint(equalToConstant: 450),
+            self.view.heightAnchor.constraint(equalToConstant: 300)
+        ])
     }
 
     //MARK: Get Contents of Directory
@@ -54,16 +61,24 @@ class ViewController: NSViewController, FileManagerDelegate  {
         folderPicker.canChooseFiles = false
         let button = folderPicker.runModal()
         if(button.rawValue == NSOKButton) {
-            var folderPicked = folderPicker.url
-            getContentsOfFolder(folder: folderPicked!)
-            checkAndCreateFolder(folderPicked: folderPicked!)
-            organizeFiles(folderPicked: folderPicked!)
-            removeEmptyFolders(folderPicked: folderPicked!)
+            self.folderPicked = (folderPicker.url?.path)!
+            folderPickedLabel.stringValue = (folderPicked)
+            
         }
         else {
             print("Action canceled")
         }
     }
+    
+    
+    @IBAction func organizeButtonPressed(_ sender: Any) {
+        let folderURL = URL(fileURLWithPath: self.folderPicked)
+        getContentsOfFolder(folder: folderURL)
+        checkAndCreateFolder(folderPicked: folderURL)
+        organizeFiles(folderPicked: folderURL)
+        removeEmptyFolders(folderPicked: folderURL)
+    }
+    
     
     //MARK: Moves Files
     func moveFile(file: String, from: URL, to: URL) {

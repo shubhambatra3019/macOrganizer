@@ -12,6 +12,16 @@ class DeleteDuplicatesViewController: NSViewController {
 
     let fileManager:FileManager = FileManager()
     var filesArray: [String] = []
+    @IBOutlet weak var folderPickedLabel: NSTextField!
+    var folderPicked = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLayoutConstraint.activate([
+            self.view.widthAnchor.constraint(equalToConstant: 450),
+            self.view.heightAnchor.constraint(equalToConstant: 300)
+            ])
+    }
     
     //MARK: Get Contents of Directory(Deep Enumeration)
     func getFiles(folder: URL) {
@@ -87,11 +97,15 @@ class DeleteDuplicatesViewController: NSViewController {
         folderPicker.canChooseFiles = false
         let button = folderPicker.runModal()
         if(button.rawValue == NSOKButton) {
-            let folderPicked = folderPicker.url
-            getFiles(folder: folderPicked!)
-            CleanMac(files: filesArray, folder: folderPicked!)
+            self.folderPicked = (folderPicker.url?.path)!
+            folderPickedLabel.stringValue = (folderPicked)
         }
     }
     
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        let folderURL = URL(fileURLWithPath: folderPicked)
+        getFiles(folder: folderURL)
+        CleanMac(files: filesArray, folder: folderURL)
+    }
     
 }

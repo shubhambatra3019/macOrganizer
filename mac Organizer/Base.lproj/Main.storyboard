@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -727,15 +728,17 @@
         <!--Organize-->
         <scene sceneID="IyH-AG-utX">
             <objects>
-                <viewController title="Organize" id="Z8c-NA-AlE" customClass="ViewController" customModule="macOrganizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Organize" id="Z8c-NA-AlE" customClass="OrganizeViewController" customModule="macOrganizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="pkQ-S3-gbg">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0V-a4-7uc">
-                                <rect key="frame" x="301" y="197" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9N-wf-WNG">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A0V-a4-7uc">
+                                <rect key="frame" x="314" y="122" width="122" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="Obd-ms-OjU"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Choose Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i9N-wf-WNG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -743,8 +746,38 @@
                                     <action selector="importButton:" target="Z8c-NA-AlE" id="ATR-c1-h3v"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKp-sU-fFW">
+                                <rect key="frame" x="20" y="128" width="290" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="Choose a Folder" bezelStyle="round" id="reZ-Jw-MxN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tE2-az-7Bi">
+                                <rect key="frame" x="175" y="50" width="100" height="32"/>
+                                <buttonCell key="cell" type="push" title="Organize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Zo-7j-P86">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="organizeButtonPressed:" target="Z8c-NA-AlE" id="So9-BM-CIt"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="A0V-a4-7uc" firstAttribute="leading" secondItem="WKp-sU-fFW" secondAttribute="trailing" constant="10" id="1RR-E6-yPZ"/>
+                            <constraint firstItem="tE2-az-7Bi" firstAttribute="top" secondItem="WKp-sU-fFW" secondAttribute="bottom" constant="50" id="DUj-7h-p0h"/>
+                            <constraint firstAttribute="trailing" secondItem="A0V-a4-7uc" secondAttribute="trailing" constant="20" id="GgH-AJ-fbF"/>
+                            <constraint firstItem="tE2-az-7Bi" firstAttribute="centerX" secondItem="pkQ-S3-gbg" secondAttribute="centerX" id="QbS-wj-YrM"/>
+                            <constraint firstItem="WKp-sU-fFW" firstAttribute="leading" secondItem="pkQ-S3-gbg" secondAttribute="leading" constant="20" id="tNL-a4-v2k"/>
+                            <constraint firstItem="WKp-sU-fFW" firstAttribute="top" secondItem="pkQ-S3-gbg" secondAttribute="top" constant="100" id="ugg-z0-5DE"/>
+                            <constraint firstItem="A0V-a4-7uc" firstAttribute="top" secondItem="pkQ-S3-gbg" secondAttribute="top" constant="100" id="yvp-cI-6ok"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="folderPickedLabel" destination="WKp-sU-fFW" id="cJU-ZA-EA5"/>
+                    </connections>
                 </viewController>
                 <customObject id="uAK-qt-lEG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -758,10 +791,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZrZ-40-eKt">
-                                <rect key="frame" x="309" y="177" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K5S-nm-j6I">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZrZ-40-eKt">
+                                <rect key="frame" x="314" y="172" width="122" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="k43-w2-xTg"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Choose Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K5S-nm-j6I">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -769,8 +804,38 @@
                                     <action selector="importButton:" target="j0Z-IW-wkR" id="siR-lT-fWh"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xfh-Rd-PL8">
+                                <rect key="frame" x="20" y="178" width="290" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" placeholderString="Choose a Folder" bezelStyle="round" id="PYx-lq-r4m">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="igf-lL-h9r">
+                                <rect key="frame" x="147" y="100" width="157" height="32"/>
+                                <buttonCell key="cell" type="push" title="Delete Duplicates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rc3-pA-8S3">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="systemMedium" size="14"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" target="j0Z-IW-wkR" id="NsQ-Up-KSn"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="igf-lL-h9r" firstAttribute="top" secondItem="Xfh-Rd-PL8" secondAttribute="bottom" constant="50" id="Bl5-CY-Ace"/>
+                            <constraint firstAttribute="trailing" secondItem="ZrZ-40-eKt" secondAttribute="trailing" constant="20" id="ESR-jw-xag"/>
+                            <constraint firstItem="Xfh-Rd-PL8" firstAttribute="leading" secondItem="sq1-Ar-NQb" secondAttribute="leading" constant="20" id="IDM-uJ-dKf"/>
+                            <constraint firstItem="ZrZ-40-eKt" firstAttribute="leading" secondItem="Xfh-Rd-PL8" secondAttribute="trailing" constant="10" id="RN7-nY-181"/>
+                            <constraint firstItem="igf-lL-h9r" firstAttribute="centerX" secondItem="sq1-Ar-NQb" secondAttribute="centerX" id="ecX-3H-8OS"/>
+                            <constraint firstItem="ZrZ-40-eKt" firstAttribute="top" secondItem="sq1-Ar-NQb" secondAttribute="top" constant="100" id="g5S-kk-Dsh"/>
+                            <constraint firstItem="Xfh-Rd-PL8" firstAttribute="top" secondItem="sq1-Ar-NQb" secondAttribute="top" constant="100" id="vJW-cQ-4Ag"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="folderPickedLabel" destination="Xfh-Rd-PL8" id="APQ-6T-gex"/>
+                    </connections>
                 </viewController>
                 <customObject id="PBx-on-ADr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
