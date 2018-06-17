@@ -11,8 +11,11 @@ import Cocoa
 class OrganizeViewController: NSViewController, FileManagerDelegate  {
 
     let fileManager:FileManager = FileManager()
+    
     var filesArray: [String] = []
+    
     var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archieves", "Duplicates", "Other"]
+    
     @IBOutlet var folderPickedLabel: NSTextField!
     
     var folderPicked = ""
@@ -63,14 +66,13 @@ class OrganizeViewController: NSViewController, FileManagerDelegate  {
         if(button.rawValue == NSOKButton) {
             self.folderPicked = (folderPicker.url?.path)!
             folderPickedLabel.stringValue = (folderPicked)
-            
         }
         else {
             print("Action canceled")
         }
     }
     
-    
+    //MARK: Organize Button Pressed
     @IBAction func organizeButtonPressed(_ sender: Any) {
         let folderURL = URL(fileURLWithPath: self.folderPicked)
         getContentsOfFolder(folder: folderURL)
@@ -78,7 +80,6 @@ class OrganizeViewController: NSViewController, FileManagerDelegate  {
         organizeFiles(folderPicked: folderURL)
         removeEmptyFolders(folderPicked: folderURL)
     }
-    
     
     //MARK: Moves Files
     func moveFile(file: String, from: URL, to: URL) {
@@ -96,7 +97,7 @@ class OrganizeViewController: NSViewController, FileManagerDelegate  {
                 try fileManager.moveItem(at: from, to: destinationUrl)
             }
             catch {
-                print(error.localizedDescription + "File Can't be moved")
+                print(error.localizedDescription)
             }
         }
     }
@@ -168,12 +169,6 @@ class OrganizeViewController: NSViewController, FileManagerDelegate  {
         }
         randomString += ".\(file.fileExtension())"
         return randomString
-    }
-    
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
     }
 }
 

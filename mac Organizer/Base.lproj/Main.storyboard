@@ -764,6 +764,15 @@
                                     <action selector="organizeButtonPressed:" target="Z8c-NA-AlE" id="So9-BM-CIt"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9T0-2j-TJ7">
+                                <rect key="frame" x="18" y="182" width="414" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="3le-nU-XGJ">
+                                    <font key="font" metaFont="system" size="11"/>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="A0V-a4-7uc" firstAttribute="leading" secondItem="WKp-sU-fFW" secondAttribute="trailing" constant="10" id="1RR-E6-yPZ"/>

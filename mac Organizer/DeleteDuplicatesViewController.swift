@@ -11,8 +11,11 @@ import Cocoa
 class DeleteDuplicatesViewController: NSViewController {
 
     let fileManager:FileManager = FileManager()
+    
     var filesArray: [String] = []
+    
     @IBOutlet weak var folderPickedLabel: NSTextField!
+    
     var folderPicked = ""
     
     override func viewDidLoad() {
@@ -85,7 +88,6 @@ class DeleteDuplicatesViewController: NSViewController {
                     }
                 })
             }
-
         }
     }
     
@@ -102,10 +104,10 @@ class DeleteDuplicatesViewController: NSViewController {
         }
     }
     
+    //MARK: Delete Button Pressed
     @IBAction func deleteButtonPressed(_ sender: Any) {
         let folderURL = URL(fileURLWithPath: folderPicked)
         getFiles(folder: folderURL)
         CleanMac(files: filesArray, folder: folderURL)
     }
-    
 }
