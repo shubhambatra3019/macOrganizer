@@ -16,12 +16,19 @@ class DeleteDuplicatesViewController: NSViewController {
     
     @IBOutlet weak var folderPickedLabel: NSTextField!
     
+    @IBOutlet weak var infoLabel: NSTextField!
+    
     var folderPicked = ""
+    
+    let info = "Func: Deletes duplicate files and archives from the chosen folder. Moves them to trash where they can be reviewed by you before being deleted permanently."
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        infoLabel.stringValue = info
+        infoLabel.usesSingleLineMode = false
+        infoLabel.cell?.wraps = true
         NSLayoutConstraint.activate([
-            self.view.widthAnchor.constraint(equalToConstant: 450),
+            self.view.widthAnchor.constraint(equalToConstant: 500),
             self.view.heightAnchor.constraint(equalToConstant: 300)
             ])
     }

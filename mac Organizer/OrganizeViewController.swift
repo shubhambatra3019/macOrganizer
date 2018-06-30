@@ -18,12 +18,19 @@ class OrganizeViewController: NSViewController, FileManagerDelegate  {
     
     @IBOutlet var folderPickedLabel: NSTextField!
     
+    @IBOutlet weak var InfoLabel: NSTextField!
+    
     var folderPicked = ""
+    
+    let info = "Func: Organizes files in the chosen folder according to the file type. Creates a new folder 'organized' and move unorganized files there in respective filetype folders."
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        InfoLabel.stringValue = info
+        InfoLabel.usesSingleLineMode = false
+        InfoLabel.cell?.wraps = true
         NSLayoutConstraint.activate([
-            self.view.widthAnchor.constraint(equalToConstant: 450),
+            self.view.widthAnchor.constraint(equalToConstant: 500),
             self.view.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
