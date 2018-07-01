@@ -1,4 +1,6 @@
 # macOrganizer
+![License: MIT][ico-license]
+
 macOrganizer is an OS X application that helps you organize your files or remove unnecessary files. 
 
 ## Usage
@@ -13,3 +15,9 @@ Tip: Removing unnecessary files deletes the duplicate and archive files but it d
 ## Contributing
 
 All contributions are welcome.
+
+## License
+
+The MIT License (MIT)
+
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
