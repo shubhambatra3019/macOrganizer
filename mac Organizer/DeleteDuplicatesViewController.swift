@@ -67,7 +67,7 @@ class DeleteDuplicatesViewController: NSViewController {
     
     //MARK: Checks if file is Archive
     func isArchiveFile(file: String) -> Bool {
-        if(fileType.getFileType(fileName: file) == "Archieves") {
+        if(fileType.getFileType(fileName: file) == "Archives") {
             return true
         }
         else {
