@@ -37,7 +37,7 @@ class fileType {
             return "Audio"
         }
         else if(isArchive(ext: ext)) {
-            return "Archieves"
+            return "Archives"
         }
         else {
             return "Other"
