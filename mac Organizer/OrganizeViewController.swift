@@ -14,7 +14,7 @@ class OrganizeViewController: NSViewController, FileManagerDelegate  {
     
     var filesArray: [String] = []
     
-    var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archieves", "Duplicates", "Other"]
+    var foldersInOrganized: [String] = ["Documents", "PDFs", "Pictures", "Audio", "Video", "Spreadsheet", "Presentation", "Archives", "Duplicates", "Other"]
     
     @IBOutlet var folderPickedLabel: NSTextField!
     
